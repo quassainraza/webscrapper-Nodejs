@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Job Scraper</title>
+  </head>
+  <body>
+    <form id="url-form">
+      <label for="url-input">Enter URL:</label>
+      <input type="text" id="url-input" name="url">
+      <button type="submit">Scrape</button>
+    </form>
+
+    <script>
+      const form = document.getElementById('url-form');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const url = document.getElementById('url-input').value;
+        const response = await fetch(`http://localhost:3000/scrape?url=${(url)}`);
+        const jobOffers = await response.json();
+        console.log(jobOffers);
+      });
+    </script>
+  </body>
+</html>
